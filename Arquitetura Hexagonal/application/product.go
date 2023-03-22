@@ -4,7 +4,12 @@ import (
 	"errors"
 
 	"github.com/asaskevich/govalidator"
+	uuid "github.com/satori/go.uuid"
 )
+
+func init() {
+	govalidator.SetFieldsRequiredByDefault(true)
+}
 
 type ProductInterface interface {
 	IsValid() (bool, error)
@@ -31,6 +36,34 @@ type Product struct {
 	Status string  `valid:"required"`
 }
 
+type ProductReader interface {
+	Get(id string) (ProductInterface, error)
+}
+
+type ProductWriter interface {
+	Save(product ProductInterface) (ProductInterface, error)
+}
+
+type ProductServiceInterface interface {
+	Get(id string) (ProductInterface, error)
+	Create(name string, price float64) (ProductInterface, error)
+	Enable(Product ProductInterface) (ProductInterface, error)
+	Disable(Product ProductInterface) (ProductInterface, error)
+}
+
+type ProductPersistenceInterface interface {
+	ProductReader
+	ProductWriter
+}
+
+func NewProduct() *Product {
+	product := Product{
+		ID:     uuid.NewV4().String(),
+		Status: DISABLED,
+	}
+	return &product
+}
+
 func (p *Product) IsValid() (bool, error) {
 	if p.Status == "" {
 		p.Status = DISABLED
@@ -43,7 +76,9 @@ func (p *Product) IsValid() (bool, error) {
 	if p.Price < 0 {
 		return false, errors.New("O preço deve ser maior que 0")
 	}
-
+	//o pacote govalidator junto com o método ValidateStruct
+	//ira checar se todos os campos de p (instância de Product)
+	//são válidos de acordo com a notation/tag definida para acada propriedade
 	_, err := govalidator.ValidateStruct(p)
 
 	if err != nil {

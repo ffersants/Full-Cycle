@@ -51,4 +51,12 @@ func TestProduct_IsValid(t *testing.T) {
 	product.Status = "invalid"
 	_, err = product.IsValid()
 	require.Equal(t, "O status deve ser disabled ou enabled", err.Error())
+
+	product.Status = application.ENABLED
+	_, err = product.IsValid()
+	require.Nil(t, err)
+
+	product.Price = -1
+	_, err = product.IsValid()
+	require.Equal(t, "O preço deve ser maior que 0", err.Error())
 }
