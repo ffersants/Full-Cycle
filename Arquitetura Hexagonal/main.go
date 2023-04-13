@@ -1,15 +1,11 @@
+/*
+Copyright © 2023 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
-import (
-	"database/sql"
-
-	db2 "github.com/ffersants/full-cycle/adapters/db"
-	"github.com/ffersants/full-cycle/application"
-)
+import "github.com/ffersants/full-cycle/cmd"
 
 func main() {
-	db, _ := sql.Open("sqlite3", "db.sqlite")
-	productDbAdapter := db2.NewProductDb(db)
-	productService := application.NewProductService(productDbAdapter)
-	productService.Create("teste produto", 25)
+	cmd.Execute()
 }
