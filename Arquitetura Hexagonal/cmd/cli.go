@@ -4,6 +4,8 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/ffersants/full-cycle/adapters/cli"
 	"github.com/spf13/cobra"
 )
@@ -24,7 +26,11 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cli.Run(&productService, action, productId, productName, productPrice)
+		res, err := cli.Run(&productService, action, productId, productName, productPrice)
+		if err != nil {
+			fmt.Printf(err.Error())
+		}
+		fmt.Print(res)
 	},
 }
 
@@ -35,7 +41,7 @@ func init() {
 	//shorthand do parametro
 	//valor padrao caso o parametro não seja informado
 	//descrição do parametro
-	cliCmd.Flags().StringVarP(&action, "action", "a", "enable", "Enable/disable product")
+	cliCmd.Flags().StringVarP(&action, "action", "a", "enable", "create | enable | disable | get")
 	cliCmd.Flags().StringVarP(&productId, "id", "i", "", "Product ID")
 	cliCmd.Flags().StringVarP(&productName, "productName", "n", "", "Product name")
 	cliCmd.Flags().Float64VarP(&productPrice, "price", "p", 0, "Product price")
