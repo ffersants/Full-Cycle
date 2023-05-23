@@ -15,7 +15,7 @@ export default class AddProductUsecase {
 	//informações contidas no DTO
 	async execute(input: AddProductInputDto): Promise<AddProductOutputDto> {
 		const product = new Product({
-			id: new Id(input.id).id,
+			id: new Id(input.id),
 			description: input.description,
 			name: input.name,
 			purchasePrice: input.purchasePrice,

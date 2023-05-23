@@ -1,8 +1,9 @@
 import BaseEntity from "../../@shared/domain/entity/base.entity";
+import Id from "../../@shared/domain/value-object/id.value-object";
 import ValueObject from "../../@shared/domain/value-object/value-object.interface";
 
 type ProductProps = {
-	id?: string;
+	id?: Id;
 	name: string;
 	description: string;
 	purchasePrice: number;
