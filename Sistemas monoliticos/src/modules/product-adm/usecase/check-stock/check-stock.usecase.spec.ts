@@ -23,6 +23,6 @@ describe("GetProduct test", () => {
 		const result = await usecase.execute("13")
 
 		expect(productRepo.find).toHaveBeenCalled()
-		expect(result).toEqual(product)
+		expect(result).toBe(product.stock)
 	});
 });

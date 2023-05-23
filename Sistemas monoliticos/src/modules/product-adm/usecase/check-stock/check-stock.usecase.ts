@@ -7,7 +7,7 @@ export default class CheckStockUsecase {
         this._productRepo = productRepo
     }
 
-    async execute(productIdInput: string): Promise<any> {
-       return await this._productRepo.find(productIdInput)
+    async execute(productIdInput: string): Promise<number> {
+       return (await this._productRepo.find(productIdInput)).stock
     }
 }
