@@ -1,7 +1,8 @@
 
-import Id from "../../@shared/domain/value-object/id.value-object";
-import ProductGateway from "../../@shared/gateway/product.gateway";
-import Product from "../domain/product.entity";
+
+import Id from "../../../@shared/domain/value-object/id.value-object";
+import ProductGateway from "../../../@shared/gateway/product.gateway";
+import Product from "../../domain/product.entity";
 import { AddProductInputDto, AddProductOutputDto } from "./add-product.dto";
 
 export default class AddProductUsecase {
