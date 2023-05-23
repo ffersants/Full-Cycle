@@ -11,7 +11,7 @@ export interface UseCasesProps {
 }
 //a facade é uma maneira de interligar os casos de uso interno da aplicação
 //com os clientes externos da aplicação
-export default class ProductAdmFaceInterface
+export default class ProductAdmFacade
 	implements ProductAdmFacadeInterface
 {
 	private _addUsecase: UseCaseInterface;

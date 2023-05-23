@@ -21,7 +21,13 @@ export default class ProductRepositry implements ProductGateway {
 	}
 	async add(product: Product): Promise<void> {
 		await ProductModel.create({
-			product,
+			id: product.id.id,
+			name: product.name,
+			description: product.description,
+			purchasePrice: product.purchasePrice,
+			stock: product.stock,
+			createdAt: product.createdAt,
+			updatedAt: product.updatedAt,
 		});
 	}
 }
