@@ -20,9 +20,9 @@ describe("GetProduct test", () => {
 		const productRepo = MockRepository
 		const usecase = new CheckStockUsecase(productRepo)
 	
-		const result = await usecase.execute("13")
+		const result = await usecase.execute({productId: "13"})
 
 		expect(productRepo.find).toHaveBeenCalled()
-		expect(result).toBe(product.stock)
+		expect(result.stock).toBe(product.stock)
 	});
 });

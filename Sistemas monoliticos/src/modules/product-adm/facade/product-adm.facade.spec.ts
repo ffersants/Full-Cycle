@@ -35,4 +35,22 @@ describe("ProductadmFacade test", () => {
         const product = await ProductModel.findOne({where: {id: input.id}})
         expect(product.id).toBe(input.id)        
     })
+
+    it("should check a product stock", async() => {
+        const productFacade = ProductAdmFacadeFactory.create()
+
+        const input = {
+            id: "1",
+            name: "product 1",
+            purchasePrice: 10,
+            stock: 10,
+            description: "descccc"
+        }
+
+        await productFacade.addProduct(input)
+        
+        const product = await productFacade.checkStock({productId: input.id})
+        expect(product.productId).toBe(input.id)        
+        expect(product.stock).toBe(input.stock)        
+    })
 });
