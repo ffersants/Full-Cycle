@@ -33,7 +33,9 @@ describe.only("ClientRepository test", () => {
 		});
 
 		await repo.add(client);
-
+		//importante utilizar diretamente o model para a operação abaixo, sem utilizar o método
+		//get implementado no repository, para evitar que um teste dependa de outro, pois
+		//neste teste o que está sendo verificado é apenas o metodo add
 		const result = await ClientModel.findOne({ where: { id: "1" } });
 
 		expect(result.id).toBe("1");

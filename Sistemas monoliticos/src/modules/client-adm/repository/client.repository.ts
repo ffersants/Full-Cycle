@@ -23,6 +23,8 @@ export default class ClientRepository implements ClientGateway{
             address: result.address,
             email: result.email,
             name: result.name,
+            createdAt: result.createdAt,
+            updatedAt: result.updatedAt
         })
     }
 
