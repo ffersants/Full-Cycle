@@ -2,12 +2,12 @@ import Id from "../../@shared/domain/value-object/id.value-object";
 import BaseEntity from "../../@shared/domain/entity/base.entity";
 import AggregateRoot from "../../@shared/domain/entity/aggregate-root.interface";
 type TransactionProps = {
-	amount: number;
 	id?: Id;
+	amount: number;
 	orderId: string;
 	status?: string;
-	createdAt: Date;
-	updatedAt: Date;
+	createdAt?: Date
+	updatedAt?: Date
 };
 
 export default class Transaction extends BaseEntity implements AggregateRoot {
@@ -16,7 +16,7 @@ export default class Transaction extends BaseEntity implements AggregateRoot {
 	private _status: string;
 
 	constructor(props: TransactionProps) {
-		super(props.id);
+		super(props.id, props.createdAt, props.updatedAt);
 
 		this._amount = props.amount;
 		this._orderId = props.orderId;
@@ -36,7 +36,7 @@ export default class Transaction extends BaseEntity implements AggregateRoot {
 	}
 
 	process(): void {
-		if (this._amount >= 100) this.approve;
+		if (this._amount >= 100) this.approve();
 		else this.decline();
 	}
 
