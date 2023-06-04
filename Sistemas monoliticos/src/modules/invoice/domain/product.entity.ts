@@ -1,6 +1,7 @@
 import Id from "../../@shared/domain/value-object/id.value-object";
 
 type ProductProps = {
+    id?: Id
 	name: string;
 	price: number;
 };
@@ -24,7 +25,7 @@ export default class Product {
     }
 
 	constructor(props: ProductProps) {
-        this._id = new Id()
+        this._id = props.id ?? new Id()
 		this._name = props.name;
 		this._price = props.price;
 	}

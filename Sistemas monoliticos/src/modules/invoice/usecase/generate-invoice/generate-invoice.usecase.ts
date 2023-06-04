@@ -10,7 +10,7 @@ export default class GenerateInvoiceUsecase implements UseCaseInterface {
     
     async execute(input: GenerateInvoiceUseCaseInputDto): Promise<GenerateInvoiceUseCaseOutputDto> {
         const invoice = new Invoice({
-            id: new Id(),
+            id: new Id("1"),
             address: {
                 street: input.street,
                 city: input.city,
@@ -24,7 +24,7 @@ export default class GenerateInvoiceUsecase implements UseCaseInterface {
             name: input.name
         })
         
-        const result = await this.repo.generate(input);
+        const result = await this.repo.generate(invoice);
 
         return {
             city: invoice.address.city,

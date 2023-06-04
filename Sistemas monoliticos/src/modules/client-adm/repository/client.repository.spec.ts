@@ -5,7 +5,7 @@ import Id from "../../@shared/domain/value-object/id.value-object";
 import ClientRepository from "./client.repository";
 import ProductModel from "../../@shared/repository/product.model";
 
-describe.only("ClientRepository test", () => {
+describe("ClientRepository test", () => {
 	let sequelize: Sequelize;
 	beforeEach(async () => {
 		sequelize = new Sequelize({
