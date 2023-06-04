@@ -1,4 +1,4 @@
-import ProductRepositry from "../../../@shared/repository/product.repository";
+import ProductRepository from "../../../product-adm/repository/product.repository";
 import UseCaseInterface from "../../../@shared/usecase/add-product/use-case.interface";
 import ProductGateway from "../../gateway/product.gateway";
 

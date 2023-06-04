@@ -3,7 +3,7 @@ import { ClientModel } from "./client.model";
 import Client from "../domain/client.entity";
 import Id from "../../@shared/domain/value-object/id.value-object";
 import ClientRepository from "./client.repository";
-import ProductModel from "../../@shared/repository/product.model";
+import ProductModel from "../../product-adm/repository/product.model";
 
 describe("ClientRepository test", () => {
 	let sequelize: Sequelize;

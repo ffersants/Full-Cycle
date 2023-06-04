@@ -1,9 +1,8 @@
 import { Sequelize } from "sequelize-typescript";
 import ProductModel from "./product.model";
-import ProductGateway from "../gateway/product.gateway";
 import Product from "../../product-adm/domain/product.entity";
-import Id from "../domain/value-object/id.value-object";
-import ProductRepositry from "./product.repository";
+import ProductRepository from "./product.repository";
+import Id from "../../@shared/domain/value-object/id.value-object";
 
 describe("ProductRepository test", () => {
 	let sequelize: Sequelize;
@@ -24,7 +23,7 @@ describe("ProductRepository test", () => {
 	});
 
 	it("should find a product recently added", async () => {
-		const productRepo = new ProductRepositry();
+		const productRepo = new ProductRepository();
 
 		const productAdded = new Product({
 			description: "test",

@@ -1,4 +1,4 @@
-import ProductGateway from "../../../@shared/gateway/product.gateway";
+import ProductGateway from "../../gateway/product.gateway";
 import { CheckStockFacadeInputDto, CheckStockFacadeOutputDto } from "../../facade/product-adm.facade.interface";
 
 export default class CheckStockUsecase {
