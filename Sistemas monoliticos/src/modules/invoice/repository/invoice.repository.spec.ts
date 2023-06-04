@@ -87,10 +87,9 @@ describe("ClientRepository test", () => {
     })
     
     const repo = new InvoiceRepository()
-    const invoice = await repo.find({id: "1"})
+    const invoice = await repo.find("1")
 
     expect(invoice).toBeDefined()
-    expect(invoice.total).toBe(20)
     expect(invoice.items).toHaveLength(2)
 })
 });

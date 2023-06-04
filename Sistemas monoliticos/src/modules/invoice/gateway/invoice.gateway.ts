@@ -3,6 +3,6 @@ import { FindInvoiceUseCaseInputDTO, FindInvoiceUseCaseOutputDTO } from "../usec
 import { GenerateInvoiceUseCaseInputDto, GenerateInvoiceUseCaseOutputDto } from "../usecase/generate-invoice/generate-invoice.dto";
 
 export default interface InvoiceGateway {
-    find(input: FindInvoiceUseCaseInputDTO): Promise<FindInvoiceUseCaseOutputDTO>
+    find(input: string): Promise<Invoice>
     generate(input: Invoice): Promise<Invoice>
 }
