@@ -10,6 +10,8 @@ type InvoiceProps = {
 	document: string;
 	address: Address; // value object
 	items: Product[]; // Product entity
+	createdAt?: Date
+	updatedAt?: Date
 };
 
 export default class Invoice extends BaseEntity implements ValueObject {
@@ -41,7 +43,7 @@ export default class Invoice extends BaseEntity implements ValueObject {
     }
 
 	constructor(props: InvoiceProps) {
-		super(props.id);
+		super(props.id, props.createdAt, props.updatedAt);
 		this._name = props.name;
 		this._document = props.document;
 		this._address = props.address;
